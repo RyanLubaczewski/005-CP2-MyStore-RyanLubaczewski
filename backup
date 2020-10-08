@@ -1,3 +1,7 @@
+
+#poop
+
+
 welcomeStatement = input(
     "Welcome to Matthew Mart. Are you an admin or a customer? ")
 inventory = {}
@@ -15,7 +19,7 @@ while running == True:
         )
         bag = int(menu.get(cart))
         count = int(input("How much of it would you like to buy? "))
-        amount = amount + (bag * count)
+        amount = amount * bag * count
 
         print("Your total is")
         print(amount)
@@ -51,10 +55,7 @@ while running == True:
         print("Thank you for working towards a better Matthew Mart")
         running = False
 
-
-    if adminAction == "y":
-      adminChoice=input("What do you wan't to do? ")
-      if adminChoice == "u":
+    if adminAction == "i":
         change = input(
             "would you like to add or subtract form the inventory? ")
 
@@ -76,13 +77,35 @@ while running == True:
             finalValue = newValue + add
             inventory.update({subItem: finalValue})
             print(inventory)
-            
-      if adminChoice == "i":
-        newItem = input("What is the name of the new item you wan't to add? ")
-      add = int(input("How much do you want to add?  "))
-      price = int(input("What do you wan't the price of the new item to be?"))
-    
-      inventory.append(newItem,add)
+
+    adminAction = input(
+        "here is the most recent inventory recording,would you like to change someting? "
+    )
+
+    if adminAction == "n":
+        print("Thank you for working towards a better Matthew Mart")
+        running = False
+
+    if adminAction == "i":
+        change = input(
+            "would you like to add or subtract form the inventory? ")
+
+        if change == "s":
+
+            subItem = input(
+                "What is the name of the item you wan't to remove? ")
+            sub = int(input("How much do you want to get rid of? "))
+            newValue = int(inventory.get(subItem))
+            finalValue = newValue - sub
+            inventory.update({subItem: finalValue})
+
+        if change == "a":
+            subItem = input(
+                "What is the name of the item you wan't to add to? ")
+            add = int(input("How much do you want to add? "))
+            newValue = int(inventory.get(subItem))
+            finalValue = newValue + add
+            inventory.update({subItem: finalValue})
 
 
 
@@ -93,3 +116,6 @@ while running == True:
 
 
             
+
+
+
